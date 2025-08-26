@@ -30,11 +30,11 @@
 
         layer_1 {
             bindings = <
-&none  &none              &none         &none       &none              &none                                &none          &none            &none                 &none                  &none             &none
-&none  &trans             &trans        &trans      &kp GRAVE          &kp EXCLAMATION                      &kp MINUS      &kp AT_SIGN      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none             &none
-&none  &kp DOUBLE_QUOTES  &kp ASTERISK  &trans      &kp LS(BACKSLASH)  &kp QUESTION     &none   &none       &kp EQUAL      &none            &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp SINGLE_QUOTE  &none
-&none  &kp DOLLAR         &kp LS(N5)    &kp LS(N6)  &kp LS(NUMBER_7)   &kp HASH         &trans  &trans      &kp PAGE_DOWN  &kp RIGHT_BRACE  &kp LESS_THAN         &kp GREATER_THAN       &none             &none
-&none  &trans             &trans        &trans      &trans             &trans           &trans  &kp DELETE  &trans         &none            &none                 &trans                 &kp RIGHT_SHIFT   &none
+&none  &none              &none         &none                  &none              &none                                &none          &none            &none                 &none                  &none             &none
+&none  &kp PIPE           &kp UNDER     &kp PLUS               &kp GRAVE          &kp EXCLAMATION                      &kp MINUS      &kp AT_SIGN      &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &none             &none
+&none  &kp DOUBLE_QUOTES  &kp ASTERISK  &kp LS(RIGHT_BRACKET)  &kp LS(BACKSLASH)  &kp QUESTION     &none   &none       &kp EQUAL      &none            &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp SINGLE_QUOTE  &none
+&none  &kp DOLLAR         &kp LS(N5)    &kp LS(N6)             &kp LS(NUMBER_7)   &kp HASH         &trans  &trans      &kp PAGE_DOWN  &kp RIGHT_BRACE  &kp LESS_THAN         &kp GREATER_THAN       &none             &none
+&none  &kp ESCAPE         &kp TAB       &kp LEFT_GUI           &trans             &trans           &trans  &kp DELETE  &trans         &none            &none                 &trans                 &kp RIGHT_SHIFT   &none
             >;
         };
 
