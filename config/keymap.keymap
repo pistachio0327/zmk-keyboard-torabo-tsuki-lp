@@ -40,11 +40,11 @@
 
         layer_2 {
             bindings = <
-&trans  &trans             &trans          &trans      &trans  &trans                         &trans         &trans          &trans          &trans           &trans    &trans
-&trans  &kp DOUBLE_QUOTES  &kp N7          &kp N8      &kp N9  &kp COLON                      &none          &kp LEFT_ARROW  &kp UP          &kp RIGHT_ARROW  &mkp MB4  &trans
-&trans  &kp SLASH          &kp N4          &kp N5      &kp N6  &kp MINUS      &trans  &trans  &kp PAGE_UP    &mkp MB1        &kp DOWN_ARROW  &mkp RCLK        &mkp MB5  &trans
-&trans  &kp N0             &kp N1          &kp N2      &kp N3  &kp LS(MINUS)  &trans  &trans  &kp PAGE_DOWN  &none           &mkp MB3        &none            &none     &trans
-&trans  &kp COMMA          &kp LEFT_SHIFT  &kp PERIOD  &trans  &trans         &trans  &trans  &trans         &none           &none           &trans           &trans    &trans
+&trans  &trans             &trans          &trans      &trans  &trans                         &trans         &trans          &trans          &trans           &trans     &trans
+&trans  &kp DOUBLE_QUOTES  &kp N7          &kp N8      &kp N9  &kp COLON                      &none          &kp LEFT_ARROW  &kp UP          &kp RIGHT_ARROW  &none      &trans
+&trans  &kp SLASH          &kp N4          &kp N5      &kp N6  &kp MINUS      &trans  &trans  &kp PAGE_UP    &mkp LCLK       &kp DOWN_ARROW  &mkp RCLK        &mkp MCLK  &trans
+&trans  &kp N0             &kp N1          &kp N2      &kp N3  &kp LS(MINUS)  &trans  &trans  &kp PAGE_DOWN  &none           &none           &none            &none      &trans
+&trans  &kp COMMA          &kp LEFT_SHIFT  &kp PERIOD  &trans  &trans         &trans  &trans  &trans         &none           &none           &trans           &trans     &trans
             >;
         };
 
