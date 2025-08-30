@@ -1,7 +1,5 @@
 #include <zephyr/dt-bindings/gpio/nordic-nrf-gpio.h>
 #include <dt-bindings/zmk/matrix_transform.h>
-#include <input/processors.dtsi>
-
 #include "torabo_tsuki_lp_layouts.dtsi"
 
 / {
@@ -101,17 +99,6 @@
     non_lipo_battery: non_lipo_battery {
         compatible = "zmk,non-lipo-battery";
         io-channels = <&adc 4>; 
-    };
-
-    scroller {
-        layers = <2
->;  //有効化するレイヤーの指定
-        input-processors = 
-            // <&zip_xy_transform INPUT_TRANSFORM_XY_SWAP>,     //X軸とY軸の入れ替え
-            <&zip_xy_transform INPUT_TRANSFORM_X_INVERT>,       //X軸反転
-            <&zip_xy_to_scroll_mapper>,                         //スクロールモードに変更
-            <&zip_scroll_transform INPUT_TRANSFORM_X_INVERT>,   //スクロールのX軸反転
-            <&zip_scroll_scaler 1 5>;                           //スクロール量を1/4倍
     };
 };
 
