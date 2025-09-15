@@ -17,3 +17,18 @@
 &size_l_transform {
     col-offset = <7>;
 };
+
+&i2c0 {
+    status = "okay";
+
+    paw3222: paw3222@0x49 {
+        compatible = "pixart,paw3222";
+        reg = <0x49>;
+        status = "okay";
+        dpi = <800>;
+    };
+};
+
+&paw3222 {
+    status = "okay";
+};
