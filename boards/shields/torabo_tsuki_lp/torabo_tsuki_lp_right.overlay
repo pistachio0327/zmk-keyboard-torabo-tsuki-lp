@@ -38,7 +38,7 @@
         dpi = <800>;      /* お好みで */
         /* 必要なら invert 等は input-processors 側で */
     };
-}
+};
 
 /* --- 右手側 listener：デバイスはセンサー本体を指す --- */
 trackball_listener: trackball_listener {
