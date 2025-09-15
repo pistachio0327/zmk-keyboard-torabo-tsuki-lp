@@ -8,15 +8,10 @@
     scroller {
         layers = <4>;
         input-processors = <
-            &zip_xy_transform(0)
+            &zip_xy_transform(0 divisor=2)
             &zip_xy_to_scroll_mapper
         >;
     };
-};
-
-/* スクロールの感度調整 */
-&zip_xy_to_scroll_mapper {
-    scale = <0.5>;   /* 半分の速度にする */
 };
 
 &size_s_transform {
