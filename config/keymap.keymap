@@ -67,7 +67,7 @@
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
             >;
             sensor-bindings = <
-                &mkp SCRL   /* レイヤー4はスクロール専用 */
+                &mkp SCRL
             >;
         };
     };
