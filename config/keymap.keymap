@@ -66,9 +66,6 @@
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
 &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none  &none
             >;
-            sensor-bindings = <
-                &mkp SCRL
-            >;
         };
     };
 };
