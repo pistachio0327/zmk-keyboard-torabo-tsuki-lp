@@ -1,6 +1,4 @@
-#include <input/processors.dtsi>
-
-/ {
+/{
     split_inputs {
         #address-cells = <1>;
         #size-cells = <0>;
@@ -15,21 +13,6 @@
         compatible = "zmk,input-listener";
         device = <&trackball_split>;
         status = "okay";
-
-        /* ▼ 常時適用（例：X/Y 反転） */
-        input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-        >;
-
-        /* ▼ レイヤー4の間だけ「XY→スクロール」に切り替える */
-        scroller {
-            layers = <4>;
-            input-processors = <
-                /* 反転が必要なら、ここにも重ねて書く（上書きルールのため） */
-                &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-                /* XY をホイールに変換 */
-                &zip_xy_to_scroll_mapper
-            >;
-        };
-    };
+        input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
+     };
 };
