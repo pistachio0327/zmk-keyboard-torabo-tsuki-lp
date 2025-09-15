@@ -45,6 +45,7 @@ trackball_listener: trackball_listener {
     compatible = "zmk,input-listener";
     device = <&paw3222>;
     status = "okay";
+    };
 
     /* 通常時：カーソル移動（例：X/Y反転が必要ならここで） */
     input-processors = <
@@ -63,4 +64,3 @@ trackball_listener: trackball_listener {
             &zip_xy_to_scroll_mapper
         >;
     };
-};
