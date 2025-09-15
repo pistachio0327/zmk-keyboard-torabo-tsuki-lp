@@ -4,7 +4,6 @@
 
 &trackball_listener {
     status = "okay";
-
     scroller {
         layers = <4>;
         input-processors = <
@@ -12,9 +11,4 @@
             &zip_xy_to_scroll_mapper
         >;
     };
-};
-
-/* 列のオフセット調整（dtsi にラベルがある前提） */
-&size_s_transform {
-    col-offset = <7>;
 };
