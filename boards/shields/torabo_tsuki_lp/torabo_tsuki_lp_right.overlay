@@ -6,12 +6,6 @@
 &trackball_listener {
     status = "okay";
 
-    /* 常時の入力変換：不要ならブロックごと削除OK。
-       例として X だけ反転したいなら下の1行だけ残す */
-    input-processors = <
-        &zip_xy_transform (INPUT_TRANSFORM_X_INVERT)
-    >;
-
     /* レイヤー4に入っている間だけ「縦のみ順方向スクロール」 */
     scroller {
         layers = <4>;
