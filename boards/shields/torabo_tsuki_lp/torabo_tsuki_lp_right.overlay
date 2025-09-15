@@ -2,34 +2,37 @@
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
-/* 通常時は反転だけ（必要な場合） */
+/* 右手リスナー：通常は必要な変換だけ、Layer4 中はスクロール化 */
 &trackball_listener {
     status = "okay";
 
-    /* 常時の入力変換（必要なければ消してOK） */
+    /* 常時の入力変換：不要ならブロックごと削除OK。
+       例として X だけ反転したいなら下の1行だけ残す */
     input-processors = <
-        &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
+        &zip_xy_transform (INPUT_TRANSFORM_X_INVERT)
     >;
 
-    /* レイヤー4に入っている間だけスクロール化 */
-&trackball_listener {
+    /* レイヤー4に入っている間だけ「縦のみ順方向スクロール」 */
     scroller {
         layers = <4>;
         input-processors = <
+            /* 縦だけにする：X を無効化 */
             &zip_xy_transform (INPUT_TRANSFORM_X_NONE)
+            /* Y は順方向（INVERT を付けない） */
             &zip_xy_to_scroll_mapper
         >;
     };
 };
 
-/* 列のオフセット調整（これらのラベルが dtsi 内にある前提） */
+/* 列のオフセット調整（dtsi にラベルがある前提） */
 &size_s_transform {
     col-offset = <7>;
 };
 
-/* &size_m_transform { */
-/*     col-offset = <7>; */
-/* }; */
+/* &size_m_transform {
+ *     col-offset = <7>;
+ * };
+ */
 
 &size_l_transform {
     col-offset = <7>;
