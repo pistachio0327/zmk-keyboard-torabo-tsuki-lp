@@ -4,7 +4,7 @@
 
 &trackball_listener {
     status = "okay";
-    input-processors = <&zip_xy_transform(0)>;
+    input-processors = <&zip_xy_transform(1)>;
     scroller {
         layers = <4>;
         input-processors = <
