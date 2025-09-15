@@ -1,61 +1,19 @@
+#include "torabo_tsuki_lp.dtsi"
 #include <input/processors.dtsi>
+#include <dt-bindings/zmk/input_transform.h>
 
-/* --- I2C0 pinctrl --- */
-&pinctrl {
-    i2c0_default: i2c0_default {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SCL, 0, 27)>,
-                    <NRF_PSEL(TWIM_SDA, 0, 26)>;
-        };
-    };
-    i2c0_sleep: i2c0_sleep {
-        group1 {
-            psels = <NRF_PSEL(TWIM_SCL, 0, 27)>,
-                    <NRF_PSEL(TWIM_SDA, 0, 26)>;
-            low-power-enable;
-        };
-    };
+&trackball_listener {
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 };
 
-/* --- I2C0 enable --- */
-&i2c0 {
-    compatible = "nordic,nrf-twim";
-    status = "okay";
-    pinctrl-0 = <&i2c0_default>;   /* ★ & 必須 */
-    pinctrl-1 = <&i2c0_sleep>;     /* ★ & 必須 */
-    pinctrl-names = "default", "sleep";
+&size_s_transform {
+    col-offset = <7>;
 };
 
-/* --- PAW3222（ラベル付き） --- */
-&i2c0 {
-    paw3222: paw3222@49 {
-        compatible = "pixart,paw3222";
-        reg = <0x49>;
-        status = "okay";
-        dpi = <800>;
-    };
-};
+// &size_m_transform {
+//     col-offset = <7>;
+// };
 
-/* --- listener：通常は移動、layer4 中だけスクロール --- */
- / {
-    trackball_listener: trackball_listener {
-        compatible = "zmk,input-listener";
-        device = <&paw3222>;   /* ★ ラベル参照 */
-        status = "okay";
-
-        /* 常時の変換が要るなら
-        input-processors = <
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-        >;
-        */
-
-        scroller {
-            layers = <4>;
-            input-processors = <
-                /* 反転も必要ならここに同じ変換を先に書く */
-                /* &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) */
-                &zip_xy_to_scroll_mapper
-            >;
-        };
-    };
+&size_l_transform {
+    col-offset = <7>;
 };
