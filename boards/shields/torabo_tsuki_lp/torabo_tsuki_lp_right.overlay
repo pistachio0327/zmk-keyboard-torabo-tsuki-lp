@@ -1,13 +1,9 @@
-#include "torabo_tsuki_lp.dtsi"
 #include <input/processors.dtsi>
-#include <dt-bindings/zmk/input_transform.h>
 
-/* --- I2C0 を有効化：実配線に合わせて psels を変更 --- */
+/* --- I2C0 pinctrl --- */
 &pinctrl {
     i2c0_default: i2c0_default {
         group1 {
-            /* 例: SCL=P0.27, SDA=P0.26 → (0,27)/(0,26)
-               P1.x を使うなら (1,x) にする */
             psels = <NRF_PSEL(TWIM_SCL, 0, 27)>,
                     <NRF_PSEL(TWIM_SDA, 0, 26)>;
         };
@@ -21,46 +17,45 @@
     };
 };
 
+/* --- I2C0 enable --- */
 &i2c0 {
     compatible = "nordic,nrf-twim";
     status = "okay";
-    pinctrl-0 = <&i2c0_default>;
-    pinctrl-1 = <&i2c0_sleep>;
+    pinctrl-0 = <&i2c0_default>;   /* ★ & 必須 */
+    pinctrl-1 = <&i2c0_sleep>;     /* ★ & 必須 */
     pinctrl-names = "default", "sleep";
 };
 
-/* --- PAW3222 本体ノード（アドレスは 0x49 が一般的ですが要確認） --- */
+/* --- PAW3222（ラベル付き） --- */
 &i2c0 {
     paw3222: paw3222@49 {
         compatible = "pixart,paw3222";
         reg = <0x49>;
         status = "okay";
-        dpi = <800>;      /* お好みで */
-        /* 必要なら invert 等は input-processors 側で */
+        dpi = <800>;
     };
 };
 
-/* --- 右手側 listener：デバイスはセンサー本体を指す --- */
-trackball_listener: trackball_listener {
-    compatible = "zmk,input-listener";
-    device = <&paw3222>;
-    status = "okay";
-    };
+/* --- listener：通常は移動、layer4 中だけスクロール --- */
+ / {
+    trackball_listener: trackball_listener {
+        compatible = "zmk,input-listener";
+        device = <&paw3222>;   /* ★ ラベル参照 */
+        status = "okay";
 
-    /* 通常時：カーソル移動（例：X/Y反転が必要ならここで） */
-    input-processors = <
-        /* 例: 反転したいなら下行のコメントを外す
-        &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
-        */
-    >;
-
-    /* レイヤー4の間だけ XY→スクロールに切替 */
-    scroller {
-        layers = <4>;
+        /* 常時の変換が要るなら
         input-processors = <
-            /* 反転が必要ならここにも同じ変換を（上書きのため） */
-            /* &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) */
-
-            &zip_xy_to_scroll_mapper
+            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
         >;
+        */
+
+        scroller {
+            layers = <4>;
+            input-processors = <
+                /* 反転も必要ならここに同じ変換を先に書く */
+                /* &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT) */
+                &zip_xy_to_scroll_mapper
+            >;
+        };
     };
+};
