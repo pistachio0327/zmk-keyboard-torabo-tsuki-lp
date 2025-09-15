@@ -16,7 +16,7 @@
         layers = <4>;
         input-processors = <
             /* 上書きになるので、常時の変換が必要ならここにも入れる */
-            &zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)
+            &zip_xy_transform (INPUT_TRANSFORM_X_NONE)
             &zip_xy_to_scroll_mapper
         >;
     };
