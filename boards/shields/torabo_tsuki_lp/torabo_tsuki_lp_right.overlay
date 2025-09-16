@@ -7,11 +7,10 @@
     input-processors = <&zip_xy_transform(6)>;
     scroller {
         layers = <4>;
-        scroll-divisor = <2>;
-        input-processors = <
-            &zip_xy_transform(0)
-            &zip_xy_to_scroll_mapper
-        >;
+        input-processors = 
+            <&zip_xy_transform(0)>,
+            <&zip_xy_to_scroll_mapper>,
+            <&zip_scroll_scaler 1 5>;                           //スクロール量を1/4倍
     };
 };
 
