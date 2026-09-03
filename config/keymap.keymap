@@ -33,7 +33,7 @@
             bindings = <
 &none  &none         &none          &none          &none         &none                             &none          &none         &none          &none        &none            &none
 &none  &kp LS(INT3)  &kp LS(MINUS)  &kp LS(EQUAL)  &kp LS(LBKT)  &kp LS(N1)                        &kp MINUS      &kp LBKT      &kp LS(N8)     &kp LS(N9)   &none            &none
-&none  &kp LS(N2)    &kp LS(SQT)    &kp LS(RBKT)   &kp LS(NUHS)  &kp LS(FSLH)  &none   &none       &kp LS(MINUS)  &kp LS(SQT)   &kp LS(RBKT)   &kp NUHS     &kp SQT          &none
+&none  &kp LS(N2)    &kp LS(SQT)    &kp LS(RBKT)   &kp LS(NUHS)  &kp LS(FSLH)  &none   &none       &kp LS(MINUS)  &kp LS(SQT)   &kp RBKT       &kp NUHS     &kp SQT          &none
 &none  &kp LS(N4)    &kp LS(N5)     &kp LS(N6)     &kp LS(N7)    &kp LS(N3)    &none   &trans      &kp LS(INT1)   &kp LS(NUHS)  &kp LS(COMMA)  &kp LS(DOT)  &kp INT1         &none
 &none  &kp ESCAPE    &kp TAB        &kp LEFT_GUI   &trans        &trans        &trans  &kp DELETE  &trans         &none         &none          &trans       &kp RIGHT_SHIFT  &none
             >;
