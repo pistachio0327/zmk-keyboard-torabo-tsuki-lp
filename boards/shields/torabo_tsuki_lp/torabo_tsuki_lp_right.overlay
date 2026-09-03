@@ -1,26 +1,20 @@
+#define TORABO_TSUKI_LP_RIGHT 1
+
 #include "torabo_tsuki_lp.dtsi"
 #include <input/processors.dtsi>
 #include <dt-bindings/zmk/input_transform.h>
 
-&trackball_listener {
-    status = "okay";
-    input-processors = <&zip_xy_transform(6)>;
-    scroller {
-        layers = <4>;
-        input-processors = 
-            <&zip_xy_transform(0)>,
-            <&zip_xy_to_scroll_mapper>,
-            <&zip_scroll_scaler 1 5>;                           //スクロール量を1/4倍
-    };
+&pointing_listener {
+    input-processors = <&zip_xy_transform (INPUT_TRANSFORM_X_INVERT | INPUT_TRANSFORM_Y_INVERT)>;
 };
 
 &size_s_transform {
     col-offset = <7>;
 };
 
-// &size_m_transform {
-//     col-offset = <7>;
-// };
+&size_m_transform {
+    col-offset = <7>;
+};
 
 &size_l_transform {
     col-offset = <7>;
